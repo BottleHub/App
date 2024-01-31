@@ -51,13 +51,13 @@ const unwatch = watchAccount(
 </script>
 
 <template>
-  <div>
-    <div class="drawer drawer-end">
+  <div class="w-full flex justify-center">
+    <div class="drawer drawer-end fixed lg:container z-10">
       <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
         <div class="flex justify-center">
           <header
-            class="navbar py-[.2em] will-change-transform top-0 w-[96%] border md:border-0 md:border-t"
+            class="navbar py-[0em] will-change-transform top-0 w-[96%] border md:border-0 md:border-t"
           >
             <div class="navbar-start ml-2 md:ml-6 block text-base">
               <nuxt-link
@@ -137,9 +137,7 @@ const unwatch = watchAccount(
           aria-label="close sidebar"
           class="drawer-overlay"
         />
-        <ul
-          class="menu p-4 w-[70%] md:w-80 min-h-full bg-slate-950 text-base-content"
-        >
+        <ul class="menu p-4 w-[70%] min-h-full bg-slate-950 text-base-content">
           <li class="partials">
             <NavigationLink to="/features" class="partials" title="Features" />
           </li>
@@ -171,6 +169,9 @@ const unwatch = watchAccount(
 </template>
 
 <style>
+:root {
+  --nav-bg: rgba(2, 6, 23, 0.25);
+}
 li.partials {
   @apply inline mx-5 font-semibold;
 }
@@ -181,7 +182,13 @@ li.partials {
   @apply rounded-2xl;
 }
 header {
-  @apply rounded-3xl mt-4 w-[96%] border-[var(--border-color)] border-opacity-60;
+  @apply rounded-3xl mt-4 w-[96%] border-[var(--border-color)] bg-[var(--nav-bg)] md:bg-transparent md:shadow-none backdrop-blur-sm md:backdrop-blur-none;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+@media (min-width: 768px) {
+  header {
+    box-shadow: none;
+  }
 }
 .drawer-side {
   -ms-overflow-style: none;
